@@ -9,11 +9,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$x;
 
 public class GoogleSearchResultsPage {
-    private final SelenideElement googleLogo = $("a#logo img[alt='Google']");
+    private final SelenideElement searchResultsDiv = $("#res");
     private List<SelenideElement> searchResultUrls = $$x("//a[h3]");
 
     public GoogleSearchResultsPage() {
-        googleLogo.waitUntil(Condition.visible, 5);
+        searchResultsDiv.waitUntil(Condition.visible, 5);
     }
 
     public String getFirstResultUrl() {

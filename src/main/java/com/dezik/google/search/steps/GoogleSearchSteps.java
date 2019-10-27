@@ -1,6 +1,7 @@
 package com.dezik.google.search.steps;
 
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -32,6 +33,8 @@ public class GoogleSearchSteps {
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide().screenshots(true).savePageSource(true));
         Configuration.pageLoadStrategy = "normal";
+        java.util.logging.Logger.getLogger("com.codeborne.selenide").setLevel(Level.SEVERE);
+        java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
 
     @Given("I have (\\w+) browser opened")
@@ -72,7 +75,7 @@ public class GoogleSearchSteps {
         return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
-    private static byte[] getPageSource() {
+    private byte[] getPageSource() {
         return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 }

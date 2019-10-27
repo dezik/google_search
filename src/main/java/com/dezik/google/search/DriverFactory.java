@@ -11,9 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public abstract class DriverFactory {
     public static void setWebDriver(String driverName) {
         switch (driverName.toLowerCase()) {
-            case "chrome":
-                Configuration.browser = "chrome";
-                break;
             case "firefox":
                 Configuration.browser = "firefox";
                 break;
@@ -25,6 +22,7 @@ public abstract class DriverFactory {
                 WebDriverRunner.setWebDriver(new ChromeDriver(chromeOptions));
                 break;
             }
+            case "chrome":
             default:
                 Configuration.browser = "chrome";
         }
